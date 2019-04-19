@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="WpfCoinMidterm.Views.UserControlMakeChange"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfCoinMidterm.Views"
+			 xmlns:local1="clr-namespace:WpfCoinMidterm.ViewModels"
+			 mc:Ignorable="d" 
+			 DataContext="MakeChangeViewModel"
+             d:DesignHeight="300" d:DesignWidth="300">
+	<UserControl.Resources>
+		<local1:SimpleConverter x:Key="myConverter"></local1:SimpleConverter>
+	</UserControl.Resources>
+	<Grid>
+		<StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Label>Amount:</Label>
+				<TextBox Width="50" Text="{Binding Path = Amount, StringFormat='{}{O:C}', Converter={StaticResource myConverter}, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+				<Button Command="{Binding Path = Ocoin}">Make Change</Button>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<ListView ItemsSource="{Binding VMCoins}" ItemStringFormat="text">
+
+				</ListView>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Button >Save</Button>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</UserControl>
