@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,14 +24,28 @@ namespace WpfCoinMidterm
             this.Year = 2019;
         }
 
+        public Coin(SerializationInfo info, StreamingContext context)
+        {
+            Year = info.GetInt32("Year");
+            MonetaryValue = info.GetDouble("Monetary Value");
+            Name = info.GetString("Name");
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Year", Year);
+            info.AddValue("Monetary Value", MonetaryValue);
+            info.AddValue("Name", Name);
+        }
+
         public override bool Equals(object obj)
         {
             var toCompareWith = obj as Coin;
-            if(toCompareWith == null)
+            if (toCompareWith == null)
             {
                 return false;
             }
-            return this.Name == toCompareWith.Name/*this.Year == toCompareWith.Year && this.MonetaryValue == toCompareWith.MonetaryValue && this.Name == toCompareWith.Name*/;
+            return this.Name == toCompareWith.Name && this.Year == toCompareWith.Year && this.MonetaryValue == toCompareWith.MonetaryValue;
         }
 
         //public override int GetHashCode()

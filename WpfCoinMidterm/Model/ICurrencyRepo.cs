@@ -10,7 +10,8 @@ namespace WpfCoinMidterm
     public interface ICurrencyRepo
     {
         List<ICoin> Coins { get; set; }
-
+        List<ICoin> CurrencyList { get; set; }
+        double totalValue { get; set; }
         string About();
         void AddCoin(ICoin c);
         int GetCoinCount();

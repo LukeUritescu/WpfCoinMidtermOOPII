@@ -20,21 +20,10 @@ namespace WpfCoinMidterm
     /// </summary>
     public partial class WindowRepo : Window
     {
-        private static CurrencyRepo repo;
-        public static CurrencyRepo Repo
-        {
-            get
-            {
-                return repo;
-            }
-            set { repo = value; }
-        }
-
         public WindowRepo(CurrencyRepo repo)
         {
             InitializeComponent();
             CurrencyRepoViewModel repoVM = new CurrencyRepoViewModel(repo);
-
             UserControlRepo1.DataContext = repoVM;
         }
 

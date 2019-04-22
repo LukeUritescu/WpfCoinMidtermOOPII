@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfCoinMidterm.ViewModels;
 
 namespace WpfCoinMidterm.Views
 {
@@ -21,13 +22,12 @@ namespace WpfCoinMidterm.Views
     /// </summary>
     public partial class UserControlRepoTest : UserControl
     {
-        //{
-        //    get { return coinsForcbCoins; }
-        //    set { coinsForcbCoins = value; }
-        //}
+
         public UserControlRepoTest()
         {
             InitializeComponent();
+            this.DataContext = new CurrencyRepoViewModel(new CurrencyRepo());
+
         }
     }
 }

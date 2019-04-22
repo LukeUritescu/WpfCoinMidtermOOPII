@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\SaveableCurrencyRepo.cs" />
     <Compile Include="ViewModels\BasicCommand.cs" />
     <Compile Include="ViewModels\CurrencyRepoViewModel.cs" />
     <Compile Include="ViewModels\MakeChangeViewModel.cs" />

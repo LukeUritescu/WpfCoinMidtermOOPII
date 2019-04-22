@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WpfCoinMidterm.Model;
 using WpfCoinMidterm.Views;
 
 namespace WpfCoinMidterm.ViewModels
@@ -14,6 +18,7 @@ namespace WpfCoinMidterm.ViewModels
         private ICurrencyRepo repo;
         private double amount = 0;
         public BasicCommand basicCommand { get; private set; }
+        private SaveableCurrencyRepo saveRepo;
         private ObservableCollection<ICoin> vmCoins = new ObservableCollection<ICoin>();
 
 
@@ -26,6 +31,21 @@ namespace WpfCoinMidterm.ViewModels
         {
             get { return vmCoins; }
             set { vmCoins = value; RaisedPropertyChanged("VMCoins"); }
+        }
+
+        public BasicCommand SaveCoin
+        {
+            get
+            {
+                basicCommand = new BasicCommand(saveCoin);
+                return basicCommand;
+            }
+        }
+
+        public void saveCoin()
+        {
+            saveRepo = new SaveableCurrencyRepo(this.repo.Coins);
+            this.saveRepo.Save();
         }
 
         public BasicCommand Ocoin

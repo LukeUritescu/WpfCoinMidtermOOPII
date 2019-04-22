@@ -11,7 +11,7 @@
 		<StackPanel Margin="8">
 			<StackPanel Orientation="Horizontal" Margin="8">
 				<Label>Total:</Label>
-				<TextBlock x:Name="RepoTotal" Text="{Binding RepoTotal, StringFormat=' {0:c}', Mode=OneWay}" />
+				<TextBlock x:Name="RepoTotal" Text="{Binding Path=RepoTotal, StringFormat=' {0:c}', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 			</StackPanel>
 			<StackPanel Orientation="Horizontal">
 				<StackPanel.Resources>
@@ -19,7 +19,7 @@
 						<Setter Property="Margin" Value="5,0,5,0" />
 					</Style>
 				</StackPanel.Resources>
-				<ComboBox x:Name="cbCoinName" Margin="5,0,5,0" ItemsSource="{Binding Path=CoinsForcdCoins}" DisplayMemberPath="Name" 
+				<ComboBox x:Name="cbCoinName" Margin="5,0,5,0" ItemsSource="{Binding CoinsForcdCoins}" DisplayMemberPath="Name"
                     SelectedItem="{Binding Path=CoinName}" >
 				</ComboBox>
 
@@ -29,7 +29,10 @@
 
 					Add Coin
 				</Button>
+				
 			</StackPanel>
+			<Button Command="{Binding SaveCoin}" Margin="59,0,170,0">Save</Button>
+			<Button Margin="59,0,170,0" Command="{Binding LoadCoin}">Load</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

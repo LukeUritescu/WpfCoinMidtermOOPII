@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WpfCoinMidterm
 {
-    [Serializable]
+    //[Serializable]
     public abstract class USCoin : Coin
     {
         public USCoinMintMark MintMark;
-        public string About()
+        public override string About()
         {
             return $"US {Name} is from {Year}. It is worth ${MonetaryValue}. It was made in Denver";
         }

@@ -24,7 +24,7 @@
 				</ListView>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal">
-				<Button >Save</Button>
+				<Button Command="{Binding SaveCoin}" >Save</Button>
 			</StackPanel>
 		</StackPanel>
 	</Grid>

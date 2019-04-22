@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300"
 				xmlns:views="clr-namespace:WpfCoinMidterm.Views">
-    <Grid>
+    <Grid Margin="138,151,0,0">
 		<Button x:Name="ButtonMakeChange" Click="ButtonMakeChange_Click">Make Change Screen</Button>
+		<Button x:Name="ButtonCurrencyRepo" Click="ButtonRepo_Click" Margin="0,-123,0,123">Currency Repo</Button>
 	</Grid>
 </Window>

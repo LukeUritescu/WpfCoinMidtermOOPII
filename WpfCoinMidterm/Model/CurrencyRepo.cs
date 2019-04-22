@@ -11,7 +11,10 @@ namespace WpfCoinMidterm
     public class CurrencyRepo : ICurrencyRepo , ISerializable 
     {
         public List<ICoin> Coins { get; set; }
+        public List<ICoin> CurrencyList { get; set; }
         public double totalValue { get; set; }
+
+        CurrencyRepo cr;
 
         public string About()
         {
@@ -31,6 +34,13 @@ namespace WpfCoinMidterm
         public CurrencyRepo()
         {
             Coins = new List<ICoin>();
+            CurrencyList = new List<ICoin>();
+            CurrencyList.Add(new Penny());
+            CurrencyList.Add(new DollarCoin());
+            CurrencyList.Add(new HalfDollar());
+            CurrencyList.Add(new Quarter());
+            CurrencyList.Add(new Dime());
+            CurrencyList.Add(new Nickel());
         }
 
         protected CurrencyRepo(SerializationInfo info, StreamingContext context)
@@ -59,48 +69,48 @@ namespace WpfCoinMidterm
             Dime dime = new Dime();
             Nickel nickel = new Nickel();
             Penny penny = new Penny();
-
+            cr = new CurrencyRepo();
             while (Amount > 0)
             {
                 if (Math.Round(Amount, 2) - Math.Round(dollarCoin.MonetaryValue, 2) >= 0)
                 {
                     Amount = Math.Round(Amount, 2) - Math.Round(dollarCoin.MonetaryValue, 2);
-                    this.AddCoin(dollarCoin);
+                    cr.AddCoin(dollarCoin);
                 }
 
                 else if (Math.Round(Amount, 2) - Math.Round(halfDollar.MonetaryValue, 2) >= 0)
                 {
                     Amount = Math.Round(Amount, 2) - Math.Round(halfDollar.MonetaryValue, 2);
-                    this.AddCoin(halfDollar);
+                    cr.AddCoin(halfDollar);
                 }
 
                 else if (Math.Round(Amount, 2) - Math.Round(quarter.MonetaryValue, 2) >= 0)
                 {
                     Amount = Math.Round(Amount, 2) - Math.Round(quarter.MonetaryValue, 2);
-                    this.AddCoin(quarter);
+                    cr.AddCoin(quarter);
                 }
 
                 else if (Math.Round(Amount, 2) - Math.Round(dime.MonetaryValue, 2) >= 0)
                 {
                     Amount = Math.Round(Amount, 2) - Math.Round(dime.MonetaryValue, 2);
-                    this.AddCoin(dime);
+                    cr.AddCoin(dime);
                 }
                 else if (Math.Round(Amount, 2) - Math.Round(nickel.MonetaryValue, 2) >= 0)
                 {
                     Amount = Math.Round(Amount, 2) - Math.Round(nickel.MonetaryValue, 2);
-                    this.AddCoin(nickel);
+                    cr.AddCoin(nickel);
                 }
-                else if (Math.Round(Amount, 2) - Math.Round(penny.MonetaryValue, 2) > 0)
+                else if (Math.Round(Amount, 2) - Math.Round(penny.MonetaryValue, 2) >= 0)
                 {
                     Amount = Math.Round(Amount, 2) - Math.Round(penny.MonetaryValue, 2);
-                    this.AddCoin(penny);
+                    cr.AddCoin(penny);
                 }
                 else
                     Amount = 0;
 
 
             }
-            return this;
+            return cr;
         }
 
         //public ICurrencyRepo MakeChange(double AmountTendered, double TotaCost)

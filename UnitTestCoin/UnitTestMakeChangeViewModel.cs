@@ -21,25 +21,25 @@ namespace UnitTestCoin
             vm = new MakeChangeViewModel(new CurrencyRepo());
         }
 
-        [TestMethod]
-        public void NotifyPropertyChanged_tests()
-        {
-            //Arrange
-            List<string> receivedEvents = new List<string>();
+        //[TestMethod]
+        //public void NotifyPropertyChanged_tests()
+        //{
+        //    //Arrange
+        //    List<string> receivedEvents = new List<string>();
 
-            vm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-                receivedEvents.Add(e.PropertyName);
-            };
+        //    vm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+        //    {
+        //        receivedEvents.Add(e.PropertyName);
+        //    };
 
-            //Act
-            //vm.RepoTotal = 1;
-            //vm.OCoin(new Penny());
+        //    //Act
+        //    //vm.RepoTotal = 1;
+        //    //vm.OCoin(new Penny());
 
-            //Assert
+        //    //Assert
 
-            Assert.AreEqual(receivedEvents[0], "RepoTotal");
-        }
-        
+        //    Assert.AreEqual(receivedEvents[0], "RepoTotal");
+        //}
+
     }
 }

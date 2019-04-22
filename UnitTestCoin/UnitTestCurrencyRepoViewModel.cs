@@ -33,9 +33,9 @@ namespace UnitTestCoin
             ObservableCollection<ICoin> testCoinsforcdCoins;
 
             //Act
-            testCoinsforcdCoins = vm.CoinsforcdCoins;
+            testCoinsforcdCoins = vm.CoinsForcdCoins;
             //Assert
-            CollectionAssert.AreEqual(((CurrencyRepo)repo).Coins, testCoinsforcdCoins);
+            CollectionAssert.AreEqual(((CurrencyRepo)repo).CurrencyList, testCoinsforcdCoins);
 
         }
     }
