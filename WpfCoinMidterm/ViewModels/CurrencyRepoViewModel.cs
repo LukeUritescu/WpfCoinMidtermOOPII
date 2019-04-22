@@ -29,7 +29,7 @@ namespace WpfCoinMidterm.ViewModels
         public ObservableCollection<ICoin> CoinsForcdCoins
         {
             get { return coinsForcbCoins; }
-            set { coinsForcbCoins = value; RaisedPropertyChanged("CoinsForCBCoins"); }
+            set { coinsForcbCoins = value; RaisedPropertyChanged("CoinsForcdCoins"); }
         }
 
         public BasicCommand basicCommand { get; private set; }
@@ -41,7 +41,6 @@ namespace WpfCoinMidterm.ViewModels
             this.repo = repo;
             CoinsForcdCoins = new ObservableCollection<ICoin>(this.repo.CurrencyList);
             this.repo.AddCoin(new Penny());
-            this.repo.totalValue = this.repo.TotalValue();
         }
 
         //public async Task<double> GetVAsync()
@@ -96,16 +95,12 @@ namespace WpfCoinMidterm.ViewModels
                 this.repo.AddCoin(CoinName);
             }
             this.repo.totalValue = this.repo.TotalValue();
+            RaisedPropertyChanged("RepoTotal");
         }
 
         public double RepoTotal
         {
-            get { return this.repo.totalValue; }
-            set
-            {
-                RaisedPropertyChanged();
-                this.repo.totalValue = value;
-            }
+            get { return this.repo.TotalValue(); }
         }
 
         public int CoinNum

@@ -78,7 +78,7 @@ namespace WpfCoinMidterm.ViewModels
             }
             set
             {
-                RaisedPropertyChanged();
+                RaisedPropertyChanged("Amount");
                 this.amount = value;
             }
         }
