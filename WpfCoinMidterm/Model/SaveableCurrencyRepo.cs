@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -17,6 +18,7 @@ namespace WpfCoinMidterm.Model
         public SaveableCurrencyRepo(List<ICoin> coins)
         {
             Path = "MyFile.bin";
+            this.Coins = coins;
         }
 
         public void Save()
@@ -27,12 +29,13 @@ namespace WpfCoinMidterm.Model
             stream.Close();
         }
 
-        public void Load()
+        public List<ICoin> Load()
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(Path, FileMode.Open, FileAccess.Read, FileShare.Read);
             List<ICoin> coins = (List<ICoin>) formatter.Deserialize(stream);
             stream.Close();
+            return coins;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfCoinMidterm
 {
-    //[Serializable]
+    [Serializable]
     public abstract class USCoin : Coin
     {
         public USCoinMintMark MintMark;

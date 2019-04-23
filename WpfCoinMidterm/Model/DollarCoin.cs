@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfCoinMidterm
 {
-   
+    [Serializable]
     public class DollarCoin : USCoin
     {
         public DollarCoin()

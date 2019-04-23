@@ -41,21 +41,21 @@ namespace UnitTestCoin
             Assert.AreEqual(defaultPath, realPath);
         }
 
-        [TestMethod]
-        public void SaveableCurrenyRepo_Saving_Load()
-        {
-            //Arrange
-            List<ICoin> loadedCoins;
+        //[TestMethod]
+        //public void SaveableCurrenyRepo_Saving_Load()
+        //{
+        //    //Arrange
+        //    List<ICoin> loadedCoins;
 
-            //Act
-            repo.Save();
-            repo.Load();
-            loadedCoins = repo.Coins;
+        //    //Act
+        //    repo.Save();
+        //    repo.Load();
+        //    loadedCoins = repo.Coins;
 
-            //Assert
-            Assert.AreEqual(repo.Coins.Count, loadedCoins.Count);
+        //    //Assert
+        //    Assert.AreEqual(repo.Coins.Count, loadedCoins.Count);
 
-            CollectionAssert.AreEqual(repo.Coins, loadedCoins);
-        }
+        //    CollectionAssert.AreEqual(repo.Coins, loadedCoins);
+        //}
     }
 }

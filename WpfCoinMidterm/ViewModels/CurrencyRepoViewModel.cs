@@ -40,7 +40,6 @@ namespace WpfCoinMidterm.ViewModels
         {
             this.repo = repo;
             CoinsForcdCoins = new ObservableCollection<ICoin>(this.repo.CurrencyList);
-            this.repo.AddCoin(new Penny());
         }
 
         //public async Task<double> GetVAsync()
@@ -48,6 +47,7 @@ namespace WpfCoinMidterm.ViewModels
         //    double l = await GetVAsync();
         //    return this.repo.TotalValue();
         //}
+
 
         public BasicCommand SaveCoin
         {
@@ -76,7 +76,9 @@ namespace WpfCoinMidterm.ViewModels
         public void loadCoin()
         {
             saveRepo = new SaveableCurrencyRepo(this.repo.Coins);
-            this.saveRepo.Load();
+            this.repo.Coins = this.saveRepo.Load();
+            RaisedPropertyChanged("RepoTotal");
+
         }
 
         public BasicCommand AddCoinCommand
@@ -94,7 +96,6 @@ namespace WpfCoinMidterm.ViewModels
             {
                 this.repo.AddCoin(CoinName);
             }
-            this.repo.totalValue = this.repo.TotalValue();
             RaisedPropertyChanged("RepoTotal");
         }
 
