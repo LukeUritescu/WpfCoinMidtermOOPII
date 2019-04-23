@@ -33,6 +33,7 @@
 			</StackPanel>
 			<Button Command="{Binding SaveCoin}" Margin="59,0,170,0">Save</Button>
 			<Button Margin="59,0,170,0" Command="{Binding LoadCoin}">Load</Button>
+			<Button Margin="59,0,163,0" Command="{Binding NewRepo}">New Repo</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

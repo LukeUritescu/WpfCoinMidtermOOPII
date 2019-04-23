@@ -42,11 +42,20 @@ namespace WpfCoinMidterm.ViewModels
             CoinsForcdCoins = new ObservableCollection<ICoin>(this.repo.CurrencyList);
         }
 
-        //public async Task<double> GetVAsync()
-        //{
-        //    double l = await GetVAsync();
-        //    return this.repo.TotalValue();
-        //}
+        public BasicCommand NewRepo
+        {
+            get
+            {
+                basicCommand = new BasicCommand(newRepo);
+                return basicCommand;
+            }
+        }
+
+        public void newRepo()
+        {
+            this.repo.Coins = new List<ICoin>();
+            RaisedPropertyChanged("RepoTotal");
+        }
 
 
         public BasicCommand SaveCoin
